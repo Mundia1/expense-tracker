@@ -1,19 +1,85 @@
 /* src/components/features/ExpenseForm/ExpenseForm.css */
 .expense-form {
     display: grid;
-    gap: calc(var(--spacing-unit) * 2);
-    margin-bottom: calc(var(--spacing-unit) * 3);
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-6);
+    background: var(--surface-color);
+    padding: var(--spacing-5);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
   }
   
-  @media (min-width: 600px) {
+  .expense-form:hover {
+    box-shadow: var(--shadow);
+  }
+  
+  .expense-form__header {
+    grid-column: 1 / -1;
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .expense-form__title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .expense-form__actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-2);
+  }
+  
+  /* Responsive grid */
+  @media (min-width: 640px) {
     .expense-form {
-      grid-template-columns: repeat(3, 1fr) auto;
-      align-items: end;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .expense-form__description {
+      grid-column: span 2;
     }
   }
   
-  @media (max-width: 599px) {
+  @media (min-width: 1024px) {
     .expense-form {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .expense-form__description {
+      grid-column: span 3;
+    }
+  }
+  
+  /* Form group styling */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+  
+  /* Form feedback */
+  .form-feedback {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--spacing-1);
+  }
+  
+  /* Success state */
+  .expense-form--success {
+    animation: fadeIn 500ms ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
