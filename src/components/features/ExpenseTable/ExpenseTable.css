@@ -1,65 +1,89 @@
 /* src/components/features/ExpenseTable/ExpenseTable.css */
-.expense-table {
+.expense-table-wrapper { /* Add a wrapper for potential overflow styling */
   width: 100%;
+  overflow-x: auto; /* Ensure horizontal scroll on small screens */
+  margin-bottom: var(--spacing-6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg); /* Match container radius */
+  box-shadow: var(--shadow);
   background: var(--surface-color);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  transform: translateZ(0);
+}
+
+.expense-table {
+  --table-border: var(--border-color);
+  --table-header-bg: var(--background-color); /* Slightly different header bg */
+  --table-row-hover: color-mix(in srgb, var(--accent-color-2) 8%, transparent); /* Subtle Green hover */
+
+  width: 100%;
+  border-collapse: collapse;
+  /* Removed background, border, radius, shadow - moved to wrapper */
 }
 
 .expense-table th,
 .expense-table td {
-  padding: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-5); /* More padding */
   text-align: left;
-  border-bottom: 1px solid var(--neutral-dark);
-  transition: background-color var(--transition);
+  border-bottom: 1px solid var(--table-border);
+  vertical-align: middle; /* Align content vertically */
 }
 
 .expense-table th {
-  background: var(--primary-color);
-  color: var(--neutral-color);
+  background-color: var(--table-header-bg);
   font-weight: 600;
+  color: var(--text-color);
+  font-size: var(--text-sm);
+  text-transform: uppercase; /* Style header text */
+  letter-spacing: 0.5px;
   position: sticky;
   top: 0;
   z-index: 10;
-  box-shadow: 0 2px 0 var(--neutral-dark);
+  /* Kenyan Flag accent border */
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, var(--kenya-black), var(--kenya-red), var(--kenya-green)) 1;
 }
 
-.expense-table tr {
-  transition: transform var(--transition);
+/* Style last row */
+.expense-table tr:last-child td {
+  border-bottom: none;
 }
 
-.expense-table tr:hover {
-  background: color-mix(in srgb, var(--accent-color) 10%, var(--surface-color));
-  transform: translateY(-2px);
+/* Hover effect */
+.expense-table tbody tr { /* Target body rows only */
+  transition: background-color var(--transition-fast);
+}
+.expense-table tbody tr:hover td {
+  background-color: var(--table-row-hover);
 }
 
 .expense-table__empty {
   text-align: center;
-  padding: var(--spacing-6);
+  padding: var(--spacing-8) var(--spacing-4);
   color: var(--text-muted);
   font-style: italic;
+  font-size: var(--text-lg);
 }
 
-.expense-table--striped tr:nth-child(even) {
-  background: color-mix(in srgb, var(--neutral-color) 95%, var(--primary-color));
+/* Striped variant */
+.expense-table--striped tbody tr:nth-child(even) td {
+  background-color: color-mix(in srgb, var(--surface-color) 96%, var(--background-color));
+}
+/* Ensure hover overrides striped */
+.expense-table--striped tbody tr:nth-child(even):hover td {
+  background-color: var(--table-row-hover);
 }
 
-@media (max-width: 768px) {
-  .expense-table {
-    display: block;
-    overflow-x: auto;
-  }
-  .expense-table th,
-  .expense-table td {
-    padding: var(--spacing-3);
-    white-space: nowrap;
-  }
-}
-
+/* Compact variant */
 .expense-table--compact th,
 .expense-table--compact td {
-  padding: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-3);
   font-size: var(--text-xs);
+}
+
+/* Responsive: Handled by wrapper overflow */
+@media (max-width: 768px) {
+  .expense-table th,
+  .expense-table td {
+    padding: var(--spacing-3) var(--spacing-4); /* Adjust padding */
+    white-space: nowrap; /* Keep content on one line if needed */
+  }
 }
