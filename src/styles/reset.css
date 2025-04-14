@@ -1,66 +1,62 @@
 /* src/styles/reset.css */
-/* Modern CSS Reset with accessibility improvements */
 *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
-    min-height: 0;
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  line-height: 1.5;
+  font-synthesis: none;
+  overflow-x: hidden;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:focus-visible {
+  outline: 2px solid #d32f2f; /* Soft Kenyan red */
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    font-size: 100%;
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    scroll-behavior: auto;
   }
-  
-  body {
-    line-height: 1.6;
-    font-synthesis: none;
-    overflow-x: hidden;
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
   }
-  
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  input, button, textarea, select {
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    border: none;
-  }
-  
-  button {
-    cursor: pointer;
-    touch-action: manipulation;
-  }
-  
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  
-  :focus-visible {
-    outline: 3px solid var(--focus-color, #3b82f6);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-  
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
+}
