@@ -1,11 +1,12 @@
-// src/components/features/ExpenseForm/ExpenseForm.jsx
+// src/components/features/ExpenseForm/ExpenseForm.jsx (Updated)
 import { useState, memo } from 'react';
-import PropTypes from 'prop-types';
 import Input from '../../ui/Input/Input';
 import Button from '../../ui/Button/Button';
+import { useExpenseContext } from '../../../contexts/ExpenseContext';
 import './ExpenseForm.css';
 
-const ExpenseForm = ({ addExpense }) => {
+const ExpenseForm = () => {
+  const { addExpense } = useExpenseContext();
   const [formData, setFormData] = useState({
     description: '',
     amount: '',
@@ -81,10 +82,6 @@ const ExpenseForm = ({ addExpense }) => {
       </Button>
     </form>
   );
-};
-
-ExpenseForm.propTypes = {
-  addExpense: PropTypes.func.isRequired,
 };
 
 export default memo(ExpenseForm);
