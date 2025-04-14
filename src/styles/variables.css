@@ -1,55 +1,109 @@
+/* src/styles/variables.css */
 :root {
-  /* Kenyan Color Scheme */
+  /* Kenyan Flag Colors */
   --kenya-black: #000000;
-  --kenya-red: #BB0000;
-  --kenya-green: #007A33;
+  --kenya-red: #BB0000; /* A strong, slightly web-safe red */
+  --kenya-green: #008800; /* A vibrant, slightly web-safe green */
   --kenya-white: #FFFFFF;
-  --kenya-yellow: #FCD116; /* For accents */
-  
-  /* Color System */
-  --primary-color: var(--kenya-red);
-  --primary-light: color-mix(in srgb, var(--kenya-red) 20%, white);
-  --secondary-color: var(--kenya-green);
-  --accent-color: var(--kenya-yellow);
+  --kenya-shield-accent: #754C29; /* Representing the shield - optional */
+
+  /* Color System - Mapped to Kenyan Theme */
+  --primary-color: var(--kenya-black); /* Black as the primary base */
+  --primary-light: #e0e0e0; /* Light grey derived from black/white */
+  --accent-color-1: var(--kenya-red); /* Red as a key accent */
+  --accent-color-2: var(--kenya-green); /* Green as another key accent */
+
   --success-color: var(--kenya-green);
-  --danger-color: #D62828;
-  --warning-color: #F77F00;
-  --info-color: #4361EE;
+  --danger-color: var(--kenya-red);
+  --warning-color: #FFA500; /* Orange can complement the theme for warnings */
+  --info-color: #3b82f6; /* Keeping info blue for now, could be adjusted */
 
   /* Neutral Colors */
-  --text-color: var(--kenya-black);
-  --text-muted: #4A5568;
-  --background-color: #F7FAFC;
+  --text-color: #1c1c1c; /* Slightly softer than pure black */
+  --text-muted: #555555;
+  --background-color: #f7f7f7; /* Very light grey background */
   --surface-color: var(--kenya-white);
-  --border-color: #E2E8F0;
-  --border-dark: #CBD5E0;
+  --border-color: #dcdcdc; /* Lighter grey border */
+  --border-dark: #b0b0b0;
 
-  /* Effects */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
-  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  /* Effects - Slightly enhanced shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 8px 15px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 15px 25px rgba(0, 0, 0, 0.15);
 
   /* Typography */
-  --font-family: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Montserrat', var(--font-family);
+  --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'Roboto Mono', monospace;
-  
-  /* ... rest of your variables ... */
+  --text-xs: 0.75rem;  /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem;    /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.375rem; /* 22px */
+  --text-2xl: 1.75rem; /* 28px */
+  --text-3xl: 2.25rem; /* 36px */
+
+  /* Spacing - Slightly increased base unit */
+  --spacing-unit: 0.6rem; /* Increased for more breathing room */
+  --spacing-1: calc(var(--spacing-unit) * 0.25);
+  --spacing-2: calc(var(--spacing-unit) * 0.5);
+  --spacing-3: calc(var(--spacing-unit) * 0.75);
+  --spacing-4: calc(var(--spacing-unit));
+  --spacing-5: calc(var(--spacing-unit) * 1.5);
+  --spacing-6: calc(var(--spacing-unit) * 2);
+  --spacing-7: calc(var(--spacing-unit) * 3); /* Added larger steps */
+  --spacing-8: calc(var(--spacing-unit) * 4);
+
+  /* Borders */
+  --border-radius-sm: 0.25rem;
+  --border-radius: 0.5rem; /* Slightly larger default radius */
+  --border-radius-lg: 0.75rem;
+  --border-radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 180ms ease;
+  --transition: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Focus Color */
+  --focus-color: var(--accent-color-1); /* Use Kenyan Red for focus */
 }
 
+/* --- Dark Mode --- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --kenya-black: #E2E8F0;
-    --kenya-white: #1A202C;
-    
-    --primary-color: color-mix(in srgb, var(--kenya-red) 80%, white);
-    --text-color: #F7FAFC;
-    --text-muted: #A0AEC0;
-    --background-color: #1A202C;
-    --surface-color: #2D3748;
-    --border-color: #4A5568;
-    --border-dark: #718096;
+    /* Kenyan Flag Colors remain the same */
+
+    /* Color System - Dark Mode */
+    --primary-color: var(--kenya-white); /* White becomes primary text/element color */
+    --primary-light: #444444;
+    /* Accents remain red/green, maybe slightly desaturated if needed */
+    /* --accent-color-1: #D93636; */
+    /* --accent-color-2: #2EAD2E; */
+
+    /* Neutral Colors - Dark Mode */
+    --text-color: var(--kenya-white);
+    --text-muted: #a0a0a0;
+    --background-color: #121212; /* Dark background */
+    --surface-color: #1e1e1e; /* Slightly lighter surface */
+    --border-color: #3a3a3a;
+    --border-dark: #555555;
+
+    /* Effects - Adjusted for dark background */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 15px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 15px 25px rgba(0, 0, 0, 0.6);
+
+    /* Focus Color */
+    --focus-color: var(--kenya-green); /* Use Green for focus in dark mode */
   }
+}
+
+/* Fluid typography (Unchanged but good to keep) */
+@media (min-width: 640px) {
+  :root { --text-base: 1.05rem; }
+}
+@media (min-width: 1024px) {
+  :root { --text-base: 1.1rem; }
 }
