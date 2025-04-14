@@ -1,0 +1,19 @@
+/* src/components/features/ExpenseForm/ExpenseForm.css */
+.expense-form {
+    display: grid;
+    gap: calc(var(--spacing-unit) * 2);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+  
+  @media (min-width: 600px) {
+    .expense-form {
+      grid-template-columns: repeat(3, 1fr) auto;
+      align-items: end;
+    }
+  }
+  
+  @media (max-width: 599px) {
+    .expense-form {
+      grid-template-columns: 1fr;
+    }
+  }
