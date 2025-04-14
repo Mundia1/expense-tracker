@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/components/App.jsx
+import { useState, useCallback } from 'react';
+import Container from './components/layout/Container/Container';
+import Header from './components/layout/Header/Header';
+import ExpenseForm from './components/features/ExpenseForm/ExpenseForm';
+import SearchBar from './components/features/SearchBar/SearchBar';
+import ExpenseActions from './components/features/ExpenseActions/ExpenseActions';
+import ExpenseTable from './components/features/ExpenseTable/ExpenseTable';
+import { generateId } from './utils/generateId';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [expenses, setExpenses] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortConfig, setSortConfig] = useState({ field: null, order: 'asc' });
+
+  const addExpense = useCallback((expense) => {
+    setExpenses((prev) => [
+      ...prev,
+      { ...expense, id: generateId(), createdAt: new Date().toISOString() },
+    ]);
+  }, []);
+
+  const deleteExpense = useCallback((id) => {
+    setExpenses((prev) => prev.filter((exp) => exp.id !== id));
+  }, []);
+
+  const updateSort = useCallback((field) => {
+    setSortConfig((prev) => ({
+      field,
+      order: prev.field === field && prev.order === 'asc' ? 'desc' : 'asc',
+    }));
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Container>
+      <Header />
+      <SearchBar setSearchTerm={setSearchTerm} />
+      <ExpenseForm addExpense={addExpense} />
+      <ExpenseActions sortConfig={sortConfig} updateSort={updateSort} />
+      <ExpenseTable
+        expenses={expenses}
+        searchTerm={searchTerm}
+        sortConfig={sortConfig}
+        deleteExpense={deleteExpense}
+      />
+    </Container>
+  );
+};
 
-export default App
+export default App;
