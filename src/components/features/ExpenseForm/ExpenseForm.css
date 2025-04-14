@@ -1,62 +1,79 @@
 /* src/components/features/ExpenseForm/ExpenseForm.css */
 .expense-form {
   display: grid;
-  gap: var(--spacing-4);
+  gap: var(--spacing-5) var(--spacing-6); /* Increase gap */
+  margin-bottom: var(--spacing-7);
   background: var(--surface-color);
-  padding: var(--spacing-5);
+  padding: var(--spacing-6) var(--spacing-7); /* More padding */
   border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  position: relative;
-  transform: translateZ(0);
-}
-
-.expense-form::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--kenyan-accent);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition);
+  border-top: 4px solid transparent; /* Space for gradient border */
+  border-image: linear-gradient(to right, var(--kenya-black), var(--kenya-red), var(--kenya-green)) 1;
 }
 
 .expense-form:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-md); /* Enhance hover shadow */
+}
+
+.expense-form__header {
+  grid-column: 1 / -1; /* Span full width */
+  margin-bottom: var(--spacing-4); /* More space after header */
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .expense-form__title {
-  font-size: var(--text-xl);
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: var(--spacing-3);
+  font-size: var(--text-xl); /* Increase title size */
+  font-weight: 700;
+  color: var(--text-color);
 }
 
 .expense-form__actions {
+  grid-column: 1 / -1; /* Span full width */
   display: flex;
   justify-content: flex-end;
-  gap: var(--spacing-3);
+  gap: var(--spacing-4); /* Increase gap between actions */
+  margin-top: var(--spacing-5); /* More space before actions */
+  padding-top: var(--spacing-5);
+  border-top: 1px solid var(--border-color);
 }
 
-@media (min-width: 640px) {
+/* Responsive grid */
+@media (min-width: 768px) { /* Adjusted breakpoint */
   .expense-form {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* More flexible grid */
+  }
+  /* Allow specific items to span if needed, e.g., a textarea */
+  .form-group--span-full {
+     grid-column: 1 / -1;
   }
 }
 
-@media (min-width: 1024px) {
-  .expense-form {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
+/* Form group styling */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-2);
+  gap: var(--spacing-2); /* Consistent gap */
 }
 
+/* Form feedback */
 .form-feedback {
-  font-size: var(--text-xs);
-  color: var(--accent-color);
+  font-size: var(--text-sm); /* Standardize size */
+  color: var(--text-muted);
+  margin-top: var(--spacing-1);
+}
+
+/* Success/Error state styling (consider adding specific feedback display) */
+.expense-form--success {
+  border-left: 5px solid var(--success-color); /* Green indicator */
+  animation: fadeIn 500ms ease forwards; /* Ensure final state persists */
+}
+.expense-form--error {
+    border-left: 5px solid var(--danger-color); /* Red indicator */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
