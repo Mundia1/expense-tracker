@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import { ExpenseProvider } from './contexts/ExpenseContext';
 import './index.css';
+import { HashRouter as Router } from 'react-router-dom'; // Import HashRouter
 
 class ErrorBoundary extends Component {
   state = { hasError: false };
@@ -29,7 +30,9 @@ root.render(
   <StrictMode>
     <ErrorBoundary>
       <ExpenseProvider>
-        <App />
+        <Router basename={process.env.PUBLIC_URL}> {/* Wrap App with Router */}
+          <App />
+        </Router>
       </ExpenseProvider>
     </ErrorBoundary>
   </StrictMode>
