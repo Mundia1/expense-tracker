@@ -44,6 +44,29 @@
   background-color: var(--button-active-bg);
 }
 
+/* --- Basic Button (No Dark Mode) --- */
+.basic {
+  /* Define styles that should NOT change in dark mode */
+  --button-text: #333; /* Example: Dark gray text */
+  --button-bg: #f0f0f0; /* Example: Light gray background */
+  --button-border: #ccc; /* Example: Light gray border */
+}
+
+.basic:hover:not(:disabled) {
+  --button-bg: #e0e0e0;
+}
+
+.basic:active:not(:disabled) {
+  --button-bg: #d0d0d0;
+}
+
+.button--outline.basic {
+  --button-text: #333;
+  --button-border: #333;
+  --button-hover-bg: rgba(0, 0, 0, 0.1);
+  --button-active-bg: rgba(0, 0, 0, 0.2);
+}
+
 /* --- Color Variants --- */
 /* .button--primary {} */ /* Removed empty rule - inherits defaults */
 
@@ -83,12 +106,14 @@
   --button-hover-bg: color-mix(in srgb, var(--primary-color) 10%, transparent);
   --button-active-bg: color-mix(in srgb, var(--primary-color) 20%, transparent);
 }
+
 .button--outline.button--accent-red {
   --button-text: var(--accent-color-1);
   --button-border: var(--accent-color-1);
   --button-hover-bg: color-mix(in srgb, var(--accent-color-1) 10%, transparent);
   --button-active-bg: color-mix(in srgb, var(--accent-color-1) 20%, transparent);
 }
+
 .button--outline.button--accent-green {
   --button-text: var(--accent-color-2);
   --button-border: var(--accent-color-2);
@@ -96,6 +121,16 @@
   --button-active-bg: color-mix(in srgb, var(--accent-color-2) 20%, transparent);
 }
 
+/* Dark mode adjustments for outline */
+@media (prefers-color-scheme: dark) {
+  .button--outline {
+    --button-text: var(--kenya-white);
+    --button-border: var(--kenya-white);
+    --button-hover-bg: rgba(255, 255, 255, 0.1);
+    --button-active-bg: rgba(255, 255, 255, 0.2);
+  }
+   /* Removed empty accent outline rules inside dark mode */
+}
 
 .button:disabled {
   opacity: 0.5;
@@ -111,6 +146,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .button__spinner::before {
   content: '';
   display: block;
@@ -121,6 +157,7 @@
   border-radius: var(--border-radius-full);
   animation: spin 800ms linear infinite;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -131,6 +168,7 @@
 .button--pulse {
   animation: pulse 2s infinite;
 }
+
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color-1) 70%, transparent); }
   70% { box-shadow: 0 0 0 10px transparent; }
@@ -142,6 +180,7 @@
   padding: var(--spacing-2) var(--spacing-4);
   font-size: var(--text-sm);
 }
+
 .button--lg {
   padding: var(--spacing-4) var(--spacing-7);
   font-size: var(--text-lg);

@@ -45,7 +45,17 @@
     background-color: color-mix(in srgb, var(--accent-color-1) 25%, transparent);
 }
 
-
+/* Dark mode active button */
+@media (prefers-color-scheme: dark) {
+    .expense-actions .button--active {
+        background-color: color-mix(in srgb, var(--accent-color-1) 25%, transparent);
+        color: var(--accent-color-1);
+        border-color: var(--accent-color-1);
+    }
+     .expense-actions .button--active:hover {
+        background-color: color-mix(in srgb, var(--accent-color-1) 35%, transparent);
+    }
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) { /* Adjusted breakpoint */
@@ -68,7 +78,6 @@
   0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color-1) 50%, transparent); }
   100% { box-shadow: 0 0 0 8px transparent; }
 }
-
 /* Removed empty .button--sort-active {} rule */
 /* If you need specific styles ONLY for the sort active button */
 /* (beyond the .button--active styles), add them here like: */
