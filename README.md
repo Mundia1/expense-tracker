@@ -5,15 +5,15 @@ Welcome to the **Expense Tracker**, a sleek and responsive React web app designe
 Ready to track your spending? Let’s dive in! 🚀
 
 ## Table of Contents
-- [✨ Features](#features)
-- [🌐 Demo](#demo)
-- [🛠️ Technologies](#technologies)
-- [📦 Installation](#installation)
-- [🎮 Usage](#usage)
-- [📂 Project Structure](#project-structure)
-- [🚀 Deployment](#deployment)
-- [🤝 Contributing](#contributing)
-- [📜 License](#license)
+- [✨ Features](#✨-features)
+- [🌐 Demo](#🌐-demo)
+- [🛠️ Technologies](#🛠️-technologies)
+- [📆 Installation](#📆-installation)
+- [🎮 Usage](#🎮-usage)
+- [📂 Project Structure](#📂-project-structure)
+- [🚀 Deployment](#🚀-deployment)
+- [🤝 Contributing](#🤝-contributing)
+- [📜 License](#📜-license)
 
 ## ✨ Features
 - **Add Expenses**: Easily input description, amount, and category to log expenses.
@@ -30,8 +30,8 @@ Ready to track your spending? Let’s dive in! 🚀
 
 ## 🌐 Demo
 Try it live or explore the code:
-- **Live Demo**: [Expense Tracker on Vercel](https://your-vercel-url.vercel.app) *(Replace with your deployed URL)*
-- **GitHub Repository**: [github.com/your-username/expense-tracker](https://github.com/your-username/expense-tracker) *(Replace with your repo URL)*
+- **Live Demo**: [Expense Tracker on Vercel](https://your-vercel-url.vercel.app)
+- **GitHub Repository**: [github.com/your-username/expense-tracker](https://github.com/your-username/expense-tracker)
 
 ## 🛠️ Technologies
 - **Frontend**: React 18, Vite
@@ -42,7 +42,7 @@ Try it live or explore the code:
 - **Deployment**: Vercel
 - **Version Control**: Git, GitHub
 
-## 📦 Installation
+## 📆 Installation
 Get the app running locally in just a few steps!
 
 ### Prerequisites
@@ -55,60 +55,58 @@ Get the app running locally in just a few steps!
    ```bash
    git clone https://github.com/your-username/expense-tracker.git
    cd expense-tracker
+   ```
 
-Install Dependencies:
-bash
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-npm install
+3. **Start the Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-Start the Development Server:
-bash
+   Open http://localhost:5173 in your browser.
 
-npm run dev
+   Port occupied? Vite will suggest another (e.g., http://localhost:5174).
 
-Open http://localhost:5173 in your browser.
+4. **Build for Production (optional)**:
+   ```bash
+   npm run build
+   npm run preview
+   ```
 
-Port occupied? Vite will suggest another (e.g., http://localhost:5174).
+   Preview at http://localhost:4173.
 
-Build for Production (optional):
-bash
+**Troubleshooting Tip**: If you hit errors, ensure `prop-types` is installed (`npm install prop-types`) or clear the cache (`rm -rf node_modules/.vite`).
 
-npm run build
-npm run preview
-
-Preview at http://localhost:4173.
-
-Troubleshooting Tip: If you hit errors, ensure prop-types is installed (npm install prop-types) or clear the cache (rm -rf node_modules/.vite).
-
- Usage
+## 🎮 Usage
 Here’s how to make the most of the Expense Tracker:
-Add an Expense:
-Enter a description (e.g., “Lunch”), amount (e.g., 12.50), and category (e.g., “Food”).
 
-Click “Add Expense”. Watch it appear in the table instantly!
+### Add an Expense:
+- Enter a description (e.g., “Lunch”), amount (e.g., 12.50), and category (e.g., “Food”).
+- Click “Add Expense”. Watch it appear in the table instantly!
 
-View Expenses:
-The table lists all expenses with formatted amounts, categories, and a delete option.
+### View Expenses:
+- The table lists all expenses with formatted amounts, categories, and a delete option.
+- Empty? You’ll see a friendly “No expenses found” message.
 
-Empty? You’ll see a friendly “No expenses found” message.
+### Search Expenses:
+- Type in the search bar (e.g., “Lunch” or “Food”) to filter results in real-time.
+- Debounced for silky-smooth performance.
 
-Search Expenses:
-Type in the search bar (e.g., “Lunch” or “Food”) to filter results in real-time.
+### Sort Expenses:
+- Click “Sort by Description” or “Sort by Category” to reorder (toggles asc/desc).
+- Visual cues show the active sort state.
 
-Debounced for silky-smooth performance.
+### Delete Expenses:
+- Hit the “Delete” button next to any expense to remove it—no fuss, no refresh.
 
-Sort Expenses:
-Click “Sort by Description” or “Sort by Category” to reorder (toggles asc/desc).
+> **Pro Tip**: Try adding multiple expenses, then search and sort to see the app’s power in action!
 
-Visual cues show the active sort state.
-
-Delete Expenses:
-Hit the “Delete” button next to any expense to remove it—no fuss, no refresh.
-
-Pro Tip: Try adding multiple expenses, then search and sort to see the app’s power in action!
-
- Project Structure
-
+## 📂 Project Structure
+```
 expense-tracker/
 ├── index.html               # Root HTML entry (moved from public/)
 ├── src/                     # Source code
@@ -145,25 +143,27 @@ expense-tracker/
 ├── README.md                # This file
 ├── vercel.json              # Vercel config
 └── vite.config.js           # Vite config
+```
 
-Note: index.html is in the project root, as per your setup. Ensure vite.config.js reflects this (see Deployment (#deployment)).
+Note: `index.html` is in the project root, as per your setup. Ensure `vite.config.js` reflects this (see [Deployment](#🚀-deployment)).
 
- Deployment
+## 🚀 Deployment
 Share your Expense Tracker with the world using Vercel!
-Deploy to Vercel
-Install Vercel CLI:
-bash
 
-npm install -g vercel
+### Deploy to Vercel
 
-Deploy:
-bash
+1. **Install Vercel CLI**:
+   ```bash
+   npm install -g vercel
+   ```
 
-vercel
+2. **Deploy**:
+   ```bash
+   vercel
+   ```
 
-Follow prompts to configure (select defaults for Vite/React).
+   Follow prompts to configure (select defaults for Vite/React).
 
-Note: Since index.html is in the root, ensure Vercel uses / as the public directory.
+> Note: Since `index.html` is in the root, ensure Vercel uses `/` as the public directory.
 
 Access the live app at the provided URL (e.g., https://your-vercel-url.vercel.app).
-
