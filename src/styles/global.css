@@ -1,0 +1,30 @@
+/* src/styles/global.css */
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: var(--spacing-unit);
+  }
+  
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+  
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
