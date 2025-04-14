@@ -45,17 +45,6 @@
     background-color: color-mix(in srgb, var(--accent-color-1) 25%, transparent);
 }
 
-/* Dark mode active button */
-@media (prefers-color-scheme: dark) {
-    .expense-actions .button--active {
-        background-color: color-mix(in srgb, var(--accent-color-1) 25%, transparent);
-        color: var(--accent-color-1);
-        border-color: var(--accent-color-1);
-    }
-     .expense-actions .button--active:hover {
-        background-color: color-mix(in srgb, var(--accent-color-1) 35%, transparent);
-    }
-}
 
 
 /* Responsive adjustments */

@@ -84,8 +84,3 @@
      gap: var(--spacing-3);
    }
 }
-
-/* Dark mode specific styles (Unchanged but good) */
-@media (prefers-color-scheme: dark) {
-  .header__title { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
-}

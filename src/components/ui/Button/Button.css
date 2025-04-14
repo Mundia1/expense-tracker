@@ -95,16 +95,6 @@
   --button-hover-bg: color-mix(in srgb, var(--accent-color-2) 10%, transparent);
   --button-active-bg: color-mix(in srgb, var(--accent-color-2) 20%, transparent);
 }
-/* Dark mode adjustments for outline */
-@media (prefers-color-scheme: dark) {
-  .button--outline {
-    --button-text: var(--kenya-white);
-    --button-border: var(--kenya-white);
-    --button-hover-bg: rgba(255, 255, 255, 0.1);
-    --button-active-bg: rgba(255, 255, 255, 0.2);
-  }
-   /* Removed empty accent outline rules inside dark mode */
-}
 
 
 .button:disabled {
