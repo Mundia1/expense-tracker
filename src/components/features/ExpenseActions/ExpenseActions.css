@@ -1,0 +1,10 @@
+/* src/components/features/ExpenseActions/ExpenseActions.css */
+.expense-actions {
+    display: flex;
+    gap: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+  
+  .expense-actions .active {
+    background-color: #0056b3;
+  }
