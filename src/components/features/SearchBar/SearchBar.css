@@ -1,58 +1,63 @@
 /* src/components/features/SearchBar/SearchBar.css */
 .search-bar {
-    position: relative;
-    margin-bottom: var(--spacing-6);
-    max-width: 100%;
-    width: 100%;
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: var(--spacing-5);
+}
+
+.search-bar__input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-3) var(--spacing-8);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--text-sm);
+  color: var(--text-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: var(--spacing-3) center;
+  background-size: 1em;
+  transition: 
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.search-bar__input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary-color) 30%, transparent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23d32f2f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
+}
+
+.search-bar__clear {
+  position: absolute;
+  right: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.search-bar__input:not(:placeholder-shown) ~ .search-bar__clear {
+  opacity: 1;
+}
+
+.search-bar__clear:hover {
+  color: var(--secondary-color);
+}
+
+.search-bar--floating {
+  position: sticky;
+  top: var(--spacing-3);
+  z-index: 30;
+  box-shadow: var(--shadow-md);
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    margin: 0 auto var(--spacing-5);
   }
-  
-  .search-bar__input {
-    padding-left: var(--spacing-8);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: var(--spacing-3) center;
-    background-size: 1em;
-    transition: all var(--transition);
-  }
-  
-  .search-bar__input:focus {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234361ee' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
-  }
-  
-  .search-bar__clear {
-    position: absolute;
-    right: var(--spacing-3);
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity var(--transition-fast);
-  }
-  
-  .search-bar__input:not(:placeholder-shown) ~ .search-bar__clear {
-    opacity: 1;
-  }
-  
-  .search-bar__clear:hover {
-    color: var(--danger-color);
-  }
-  
-  /* Floating search variant */
-  .search-bar--floating {
-    position: sticky;
-    top: var(--spacing-4);
-    z-index: 20;
-  }
-  
-  .search-bar--floating .search-bar__input {
-    box-shadow: var(--shadow-md);
-  }
-  
-  @media (min-width: 768px) {
-    .search-bar {
-      max-width: 400px;
-    }
-  }
+}
