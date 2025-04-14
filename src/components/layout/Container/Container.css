@@ -56,13 +56,6 @@
   border: 1px solid color-mix(in srgb, var(--border-color) 40%, transparent);
   box-shadow: var(--shadow-lg);
 }
-/* Dark mode glass */
-@media (prefers-color-scheme: dark) {
-    .container--glass {
-      background: color-mix(in srgb, var(--surface-color) 70%, transparent);
-      border: 1px solid color-mix(in srgb, var(--border-color) 50%, transparent);
-    }
-}
 
 /* Section container (no change needed) */
 .container--section {
