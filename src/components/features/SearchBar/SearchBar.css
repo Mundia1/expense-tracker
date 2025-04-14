@@ -1,0 +1,11 @@
+/* src/components/features/SearchBar/SearchBar.css */
+.search-bar {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    max-width: 400px;
+  }
+  
+  @media (max-width: 600px) {
+    .search-bar {
+      max-width: 100%;
+    }
+  }
