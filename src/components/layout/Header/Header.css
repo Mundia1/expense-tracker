@@ -1,57 +1,91 @@
 /* src/components/layout/Header/Header.css */
 .header {
   text-align: center;
-  margin-bottom: var(--spacing-6);
-  padding: var(--spacing-4) 0;
+  margin-bottom: var(--spacing-8); /* More space below header */
   position: relative;
-  background: var(--surface-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
+  padding-bottom: var(--spacing-4); /* Add padding for separation */
 }
 
 .header__title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl); /* Larger title */
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--text-color);
+  margin-bottom: var(--spacing-4); /* Space between title and subtitle */
   position: relative;
-  display: inline-block;
-  transition: transform var(--transition);
+  display: inline-block; /* Needed for pseudo-element positioning */
 }
 
-.header__title:hover {
-  transform: scale(1.05);
-}
-
+/* Kenyan Flag Underline */
 .header__title::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--kenyan-accent);
+  bottom: -8px; /* Position underline below text */
+  left: 10%; /* Indent underline */
+  right: 10%;
+  height: 4px; /* Thicker underline */
+  background: linear-gradient(90deg, var(--kenya-black), var(--kenya-red), var(--kenya-green));
   border-radius: var(--border-radius-full);
 }
 
 .header__subtitle {
-  font-size: var(--text-lg);
+  font-size: var(--text-lg); /* Larger subtitle */
   color: var(--text-muted);
-  max-width: 800px;
-  margin: var(--spacing-3) auto 0;
+  max-width: 700px; /* Allow slightly wider subtitle */
+  margin: 0 auto;
+  line-height: 1.7; /* Improve readability */
 }
 
+/* Header with Actions Variant */
 .header--with-actions {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-between;
   align-items: center;
   text-align: left;
+  gap: var(--spacing-4); /* Add gap between elements */
+  border-bottom: 1px solid var(--border-color); /* Add separator */
+  padding-bottom: var(--spacing-5);
+}
+.header--with-actions .header__content { /* Wrapper for title/subtitle */
+  flex-grow: 1;
 }
 
+.header--with-actions .header__title {
+    margin-bottom: var(--spacing-2); /* Reduce margin when subtitle present */
+}
+
+.header--with-actions .header__title::after {
+  left: 0; /* Align underline to left */
+  right: auto;
+  width: 60%; /* Adjust width as needed */
+}
+.header--with-actions .header__actions { /* Wrapper for buttons/etc */
+  flex-shrink: 0; /* Prevent actions from shrinking too much */
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
+  .header { margin-bottom: var(--spacing-6); }
+  .header__title { font-size: var(--text-2xl); }
+  .header__subtitle { font-size: var(--text-base); }
+
   .header--with-actions {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-3);
-    text-align: center;
+    flex-direction: column;
+    align-items: stretch; /* Stretch items full width */
+    text-align: center; /* Center text */
   }
+  .header--with-actions .header__title::after {
+    left: 25%;
+    width: 50%; /* Center underline */
+  }
+   .header--with-actions .header__actions {
+     display: flex;
+     justify-content: center; /* Center actions */
+     gap: var(--spacing-3);
+   }
+}
+
+/* Dark mode specific styles (Unchanged but good) */
+@media (prefers-color-scheme: dark) {
+  .header__title { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
 }
