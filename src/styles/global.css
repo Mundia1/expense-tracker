@@ -6,7 +6,8 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   margin: 0;
-  padding: var(--spacing-7); /* Increased body padding */
+  padding: var(--spacing-6); /* Slightly reduced body padding */
+  font-size: 16px; /* Example: Larger base font size */
   transition: background-color var(--transition), color var(--transition);
   /* Optional: Subtle background pattern */
   /* background-image: linear-gradient(var(--border-color) 1px, transparent 1px), linear-gradient(to right, var(--border-color) 1px, var(--background-color) 1px); */
@@ -48,6 +49,11 @@ a {
 a:hover, a:focus {
   color: var(--accent-color-2); /* Kenyan Green on hover/focus */
   text-decoration-thickness: 2px;
+}
+
+/* Style for code elements to use Roboto Mono */
+code, pre {
+  font-family: 'Roboto Mono', monospace;
 }
 
 /* Scrollbar styling using theme colors */
