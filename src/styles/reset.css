@@ -1,4 +1,5 @@
 /* src/styles/reset.css */
+/* Modern CSS Reset with accessibility improvements */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -17,7 +18,7 @@ html {
 }
 
 body {
-  line-height: 1.5;
+  line-height: 1.6; /* Adjusted slightly from 1.6 to fit theme */
   font-synthesis: none;
   overflow-x: hidden;
 }
@@ -45,10 +46,11 @@ table {
   border-spacing: 0;
 }
 
+/* Ensure focus outline uses variable defined in variables.css */
 :focus-visible {
-  outline: 2px solid #d32f2f; /* Soft Kenyan red */
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: 3px solid var(--focus-color, #3b82f6); /* Fallback color */
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -56,7 +58,9 @@ table {
     scroll-behavior: auto;
   }
   *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
