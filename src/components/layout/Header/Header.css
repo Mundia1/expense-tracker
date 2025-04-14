@@ -1,0 +1,17 @@
+/* src/components/layout/Header/Header.css */
+.header {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+  
+  .header__title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  @media (max-width: 600px) {
+    .header__title {
+      font-size: 1.5rem;
+    }
+  }
