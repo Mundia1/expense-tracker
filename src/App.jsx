@@ -9,7 +9,7 @@ import ExpenseTable from './components/features/ExpenseTable/ExpenseTable';
 import './App.css';
 
 
-
+// src/functinality
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ field: null, order: 'asc' });
