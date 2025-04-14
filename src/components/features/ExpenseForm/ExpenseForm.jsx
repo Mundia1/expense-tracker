@@ -1,4 +1,4 @@
-// src/components/features/ExpenseForm/ExpenseForm.jsx (Updated)
+// src/components/features/ExpenseForm/ExpenseForm.jsx
 import { useState, memo } from 'react';
 import Input from '../../ui/Input/Input';
 import Button from '../../ui/Button/Button';
