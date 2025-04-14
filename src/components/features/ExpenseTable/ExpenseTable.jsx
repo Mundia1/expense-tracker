@@ -1,26 +1,16 @@
-// src/components/features/ExpenseTable/ExpenseTable.jsx
+// src/components/features/ExpenseTable/ExpenseTable.jsx (Updated)
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import ExpenseRow from './ExpenseRow';
+import { useExpenseContext } from '../../../contexts/ExpenseContext';
+import { useExpenseFilter } from '../../../hooks/useExpenseFilter';
+import { useExpenseSort } from '../../../hooks/useExpenseSort';
 import './ExpenseTable.css';
 
-const ExpenseTable = ({ expenses, searchTerm, sortConfig, deleteExpense }) => {
-  // Filter expenses
-  const filteredExpenses = expenses.filter(
-    (exp) =>
-      exp.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      exp.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  // Sort expenses
-  const sortedExpenses = [...filteredExpenses].sort((a, b) => {
-    if (!sortConfig.field) return 0;
-    const valueA = a[sortConfig.field].toLowerCase();
-    const valueB = b[sortConfig.field].toLowerCase();
-    return sortConfig.order === 'asc'
-      ? valueA.localeCompare(valueB)
-      : valueB.localeCompare(valueA);
-  });
+const ExpenseTable = ({ searchTerm, sortConfig }) => {
+  const { expenses, deleteExpense } = useExpenseContext();
+  const filteredExpenses = useExpenseFilter(expenses, searchTerm);
+  const sortedExpenses = useExpenseSort(filteredExpenses, sortConfig);
 
   return (
     <table className="expense-table">
@@ -54,20 +44,11 @@ const ExpenseTable = ({ expenses, searchTerm, sortConfig, deleteExpense }) => {
 };
 
 ExpenseTable.propTypes = {
-  expenses: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-      category: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   searchTerm: PropTypes.string.isRequired,
   sortConfig: PropTypes.shape({
     field: PropTypes.string,
     order: PropTypes.oneOf(['asc', 'desc']),
   }).isRequired,
-  deleteExpense: PropTypes.func.isRequired,
 };
 
 export default memo(ExpenseTable);
