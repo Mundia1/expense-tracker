@@ -1,6 +1,20 @@
 /* src/App.css */
 .app {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--spacing-unit) * 2);
-  }
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: var(--background);
+  position: relative;
+}
+
+.app::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--surface-glass), transparent);
+  z-index: -1;
+}
