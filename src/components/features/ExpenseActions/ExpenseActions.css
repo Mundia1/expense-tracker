@@ -1,69 +1,90 @@
 /* src/components/features/ExpenseActions/ExpenseActions.css */
 .expense-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-3);
-  margin-bottom: var(--spacing-5);
-  padding: var(--spacing-3);
-  background: var(--surface-color);
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: var(--spacing-4); /* Increase gap */
+  margin-bottom: var(--spacing-6);
+  padding: var(--spacing-4); /* Add padding */
+  background-color: var(--background-color); /* Subtle background */
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  position: sticky;
-  top: var(--spacing-3);
-  z-index: 20;
+  align-items: center;
+  border: 1px solid var(--border-color);
 }
 
 .expense-actions__group {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping within group */
   gap: var(--spacing-2);
+  align-items: center;
 }
 
 .expense-actions__divider {
   width: 1px;
-  height: 1.5em;
-  background: var(--neutral-dark);
+  height: 2em; /* Make divider taller */
+  background-color: var(--border-dark); /* Darker divider */
+  margin: 0 var(--spacing-3); /* Adjust margin */
 }
 
 .expense-actions__label {
   font-size: var(--text-sm);
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600; /* Bolder label */
+  margin-right: var(--spacing-1); /* Space after label */
 }
 
-.button--active {
-  background: var(--accent-color);
-  color: var(--neutral-color);
-  box-shadow: var(--shadow);
+/* Active sort/filter button styling */
+.expense-actions .button--active {
+  /* Use outline style with accent color */
+  background-color: color-mix(in srgb, var(--accent-color-1) 15%, transparent); /* Red accent */
+  color: var(--accent-color-1);
+  border-color: var(--accent-color-1);
+  box-shadow: none; /* Remove default shadow for active state */
 }
 
-.button--sort-active {
-  position: relative;
-  overflow: hidden;
+.expense-actions .button--active:hover {
+    background-color: color-mix(in srgb, var(--accent-color-1) 25%, transparent);
 }
 
-.button--sort-active::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: color-mix(in srgb, var(--accent-color) 20%, transparent);
-  animation: pulse-glow 1.8s infinite;
+/* Dark mode active button */
+@media (prefers-color-scheme: dark) {
+    .expense-actions .button--active {
+        background-color: color-mix(in srgb, var(--accent-color-1) 25%, transparent);
+        color: var(--accent-color-1);
+        border-color: var(--accent-color-1);
+    }
+     .expense-actions .button--active:hover {
+        background-color: color-mix(in srgb, var(--accent-color-1) 35%, transparent);
+    }
 }
 
-@keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color) 50%, transparent);
-  }
-  100% {
-    box-shadow: 0 0 0 8px transparent;
-  }
-}
 
-@media (max-width: 640px) {
+/* Responsive adjustments */
+@media (max-width: 768px) { /* Adjusted breakpoint */
   .expense-actions {
     flex-direction: column;
-    align-items: stretch;
+    align-items: stretch; /* Stretch groups */
+    padding: var(--spacing-3);
   }
-  .expense-actions__divider {
-    display: none;
+  .expense-actions__group {
+    justify-content: center; /* Center items within group */
   }
+  .expense-actions__divider { display: none; } /* Hide divider */
+  .expense-actions__label { text-align: center; width: 100%; margin-bottom: var(--spacing-2); }
 }
+
+/* Animation for active sort (using theme colors) */
+/* Add the .button--sort-active class to the button if you want */
+/* to apply this specific animation */
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color-1) 50%, transparent); }
+  100% { box-shadow: 0 0 0 8px transparent; }
+}
+
+/* Removed empty .button--sort-active {} rule */
+/* If you need specific styles ONLY for the sort active button */
+/* (beyond the .button--active styles), add them here like: */
+/*
+.button--sort-active {
+   animation: pulse-glow 1.5s infinite;
+}
+*/
