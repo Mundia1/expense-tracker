@@ -1,0 +1,51 @@
+/* src/components/ui/Input/Input.css */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit) * 0.5);
+  }
+  
+  .input__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .input__required {
+    color: var(--danger-color);
+    margin-left: 2px;
+  }
+  
+  .input {
+    padding: var(--spacing-unit);
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--surface-color);
+    transition: var(--transition);
+  }
+  
+  .input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+  
+  .input--error {
+    border-color: var(--danger-color);
+  }
+  
+  .input__error {
+    font-size: 0.75rem;
+    color: var(--danger-color);
+  }
+  
+  @media (max-width: 600px) {
+    .input {
+      font-size: 0.875rem;
+      padding: calc(var(--spacing-unit) * 0.75);
+    }
+  
+    .input__label {
+      font-size: 0.75rem;
+    }
+  }
