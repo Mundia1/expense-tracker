@@ -7,7 +7,7 @@ import SearchBar from './components/features/SearchBar/SearchBar';
 import ExpenseActions from './components/features/ExpenseActions/ExpenseActions';
 import ExpenseTable from './components/features/ExpenseTable/ExpenseTable';
 import './App.css';
-import '../src/styles/global.css';
+
 
 
 const App = () => {
