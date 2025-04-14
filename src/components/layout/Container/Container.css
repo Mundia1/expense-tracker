@@ -1,15 +1,62 @@
 /* src/components/layout/Container/Container.css */
 .container {
-    max-width: 960px;
+    --container-padding: var(--spacing-6);
+    --container-max-width: 1200px;
+    
+    width: 100%;
+    max-width: var(--container-max-width);
     margin: 0 auto;
-    padding: calc(var(--spacing-unit) * 2);
+    padding: var(--container-padding);
     background: var(--surface-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
   }
   
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  }
+  
+  .container--narrow {
+    --container-max-width: 800px;
+  }
+  
+  .container--wide {
+    --container-max-width: 1400px;
+  }
+  
+  .container--no-padding {
+    --container-padding: 0;
+  }
+  
+  /* Responsive adjustments */
   @media (max-width: 768px) {
     .container {
-      padding: var(--spacing-unit);
+      --container-padding: var(--spacing-4);
+      border-radius: 0;
     }
+    
+    .container::before {
+      height: 3px;
+    }
+  }
+  
+  /* Glass morphism variant */
+  .container--glass {
+    background: color-mix(in srgb, var(--surface-color) 85%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in srgb, var(--border-color) 30%, transparent);
+  }
+  
+  /* Section container */
+  .container--section {
+    margin-bottom: var(--spacing-8);
   }
