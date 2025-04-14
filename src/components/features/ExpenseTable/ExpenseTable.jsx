@@ -1,4 +1,4 @@
-// src/components/features/ExpenseTable/ExpenseTable.jsx (Updated)
+// src/components/features/ExpenseTable/ExpenseTable.jsx
 import { memo } from 'react';
 import PropTypes from 'prop-types';
 import ExpenseRow from './ExpenseRow';
