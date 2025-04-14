@@ -6,7 +6,6 @@ import ExpenseForm from './components/features/ExpenseForm/ExpenseForm';
 import SearchBar from './components/features/SearchBar/SearchBar';
 import ExpenseActions from './components/features/ExpenseActions/ExpenseActions';
 import ExpenseTable from './components/features/ExpenseTable/ExpenseTable';
-import { ExpenseProvider } from './contexts/ExpenseContext';
 import './App.css';
 
 const App = () => {
@@ -21,15 +20,13 @@ const App = () => {
   }, []);
 
   return (
-    <ExpenseProvider>
-      <Container className="app">
-        <Header />
-        <SearchBar setSearchTerm={setSearchTerm} />
-        <ExpenseForm />
-        <ExpenseActions sortConfig={sortConfig} updateSort={updateSort} />
-        <ExpenseTable searchTerm={searchTerm} sortConfig={sortConfig} />
-      </Container>
-    </ExpenseProvider>
+    <Container>
+      <Header />
+      <SearchBar setSearchTerm={setSearchTerm} />
+      <ExpenseForm />
+      <ExpenseActions sortConfig={sortConfig} updateSort={updateSort} />
+      <ExpenseTable searchTerm={searchTerm} sortConfig={sortConfig} />
+    </Container>
   );
 };
 
